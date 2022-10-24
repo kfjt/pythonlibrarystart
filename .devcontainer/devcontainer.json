@@ -1,0 +1,55 @@
+{
+	"name": "Python 3",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": "..",
+		"target": "development"
+	},
+	"remoteUser": "vscode",
+	"containerEnv": {
+		"PYTHONPATH": "${containerWorkspaceFolder}/src:${PYTHONPATH}"
+	},
+	// "initializeCommand": "",
+	// "onCreateCommand": "",
+	// "updateContentCommand": "",
+	// "postCreateCommand": "",
+	// "postStartCommand": "",
+	// "postAttachCommand": "",
+	"customizations": {
+		"vscode": {
+			"settings": { 
+				"python.defaultInterpreterPath": "/home/vscode/.local/venv/bin/python",
+				"python.linting.enabled": true,
+				"python.linting.pylintEnabled": false,
+				"python.linting.flake8Enabled": true,
+				"python.linting.flake8Path": "/usr/local/py-utils/bin/flake8",
+				"python.formatting.provider": "black",
+				"python.formatting.blackPath": "/usr/local/py-utils/bin/black",
+				"python.sortImports.args": ["--profile", "black"],
+				"[python]": {
+					"editor.wordBasedSuggestions": false,
+					"editor.formatOnSave": true,
+					"editor.codeActionsOnSave": {
+						"source.organizeImports": true
+					}
+				},
+				"editor.insertSpaces": true,
+				"terminal.integrated.profiles.linux": {
+					"bash": {
+						"path": "bash",
+						"icon": "terminal-bash"
+					}
+				},
+				"terminal.integrated.defaultProfile.linux": "bash",
+				"task.allowAutomaticTasks": "on"
+			},
+			"extensions": [
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+				"mhutchie.git-graph",
+				"njpwerner.autodocstring",
+				"ms-vscode.live-server"
+			]
+		}
+	}
+}

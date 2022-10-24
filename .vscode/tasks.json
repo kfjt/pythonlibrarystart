@@ -1,0 +1,41 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "init:env",
+            "type": "shell",
+            "command": "poetry install",
+            "group": "none",
+            "runOptions": {
+                "runOn": "folderOpen"
+            }
+        },
+        {
+            "label": "test",
+            "type": "shell",
+            "command": "poetry run pytest",
+            "group": "test"
+        },
+        {
+            "label": "test:watch",
+            "type": "shell",
+            "command": "poetry run ptw",
+            "group": "test"
+        },
+        {
+            "label": "sphinx:rst",
+            "type": "shell",
+            "command": "poetry run sphinx-apidoc -f -o ./docs/source ./src",
+            "group": "build"
+        },
+        {
+            "label": "sphinx:html",
+            "type": "shell",
+            "command": "poetry run sphinx-build -b html ./docs/source ./docs/build",
+            "dependsOn": "sphinx:rst",
+            "group": "build"
+        },
+    ]
+}
